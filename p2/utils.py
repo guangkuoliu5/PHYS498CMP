@@ -18,14 +18,14 @@ def PrettyPrintBinary(myState): #takes in a [(sqrt(0.5),'00'),(sqrt(0.5),'10')],
     myState=VecToState(StateToVec(myState))
     outstring=''
     for (a,s) in myState:
-        if a.imag==0:
+        if abs(a.imag)<=1e-10:
             if a.real<0:
                 outstring+='-'
                 a=-a
             else:
                 outstring+='+'
             outstring=outstring+' {0:.12f} |{1}> '.format(a.real,s)
-        elif a.real==0:
+        elif abs(a.real)<=1e-10:
             if a.imag<0:
                 outstring+='-'
                 a=-a
@@ -51,14 +51,14 @@ def PrettyPrintInteger(myState): #takes in a [(sqrt(0.5),'00'),(sqrt(0.5),'10')]
     for s in range(len(myVec)):
         a=myVec[s]
         if a==0+0j: continue
-        if a.imag==0:
+        if abs(a.imag)<=1e-10:
             if a.real<0:
                 outstring+='-'
                 a=-a
             else:
                 outstring+='+'
             outstring=outstring+' {0:.12f} |{1}> '.format(a.real,s)
-        elif a.real==0:
+        elif abs(a.real)<=1e-10:
             if a.imag<0:
                 outstring+='-'
                 a=-a
@@ -106,3 +106,37 @@ def CNOTArray(c, t, n):
             ket=bra[:t]+str(1- int(bra[t]))+bra[t+1:]
         ret[int(bra,2),int(ket,2)]=1.
     return ret
+
+def PArray(i,k,phi):
+    listOfMatrices=[np.eye(2) if (i!=j) else np.array([[1,0],[0,np.exp(phi*1j)]]) for j in range(k)]
+    return tensorMe(listOfMatrices)
+
+def PArray_braket(c,n,phi):
+    size=2**n
+    ret=np.full((size,size),0+0j)
+    for i in range(size):
+        bra=bin(i)[2:].zfill(n)
+        ket=bra
+        if bra[c]=='1':
+            ret[int(bra,2),int(ket,2)]=np.exp(phi*1j)
+        else:
+            ret[int(bra,2),int(ket,2)]=1.
+    return ret
+    
+def initState_basis(ket):
+    return StateToVec([(1,ket[1:-1])])
+def initState_file(filename):
+    ret=[]
+    with open('circuits/'+filename,'r') as infile:
+        for line in infile.readlines():
+            (re,im)=line.split()
+            ret.append(float(re)+float(im)*1j)
+    return np.array(ret)
+
+def initState(kind, param):
+    if kind=='FILE':
+        return initState_file(param)
+    else:
+        return initState_basis(param)
+
+
