@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from datetime import datetime
 def StateToVec(myState):
     nstates=2**len(myState[0][1])
     myVec=np.full(nstates,0.+0.j)
@@ -33,12 +35,7 @@ def PrettyPrintBinary(myState): #takes in a [(sqrt(0.5),'00'),(sqrt(0.5),'10')],
                 outstring+='+'
             outstring=outstring+' {0:.12f}j |{1}> '.format(a.imag,s)
         else:
-            if a.real<0:
-                outstring+='-'
-                a=-a
-            else:
-                outstring+='+'
-            outstring=outstring+' {0:.12f} |{1}> '.format(a,s)
+            outstring=outstring+'+ ({0:.12f}) |{1}> '.format(a,s)
     if outstring[0]=='+':
         outstring='('+outstring[1:]+')'
     else:
@@ -66,12 +63,7 @@ def PrettyPrintInteger(myState): #takes in a [(sqrt(0.5),'00'),(sqrt(0.5),'10')]
                 outstring+='+'
             outstring=outstring+' {0:.12f}j |{1}> '.format(a.imag,s)
         else:
-            if a.real<0:
-                outstring+='-'
-                a=-a
-            else:
-                outstring+='+'
-            outstring=outstring+' {0:.12f} |{1}> '.format(a,s)
+            outstring=outstring+'+ ({0:.12f}) |{1}> '.format(a,s)
     if outstring[0]=='+':
         outstring='('+outstring[1:]+')'
     else:
@@ -139,4 +131,36 @@ def initState(kind, param):
     else:
         return initState_basis(param)
 
+def measure(stateVec, numTrials=100):
+    n=len(stateVec)
+    result=np.zeros(n)
+    dist=np.square(np.absolute(stateVec))
+    for i in range(numTrials):
+        shot=np.random.choice(range(n), p=dist)
+        result[shot]+=1
+    return result
 
+def createHist(result,annotate=True):
+    histfilename='img/result_'+datetime.now().strftime('%m%d_%H%M')+'.png'
+    fig, ax=plt.subplots()
+    allstates=range(len(result))
+    numQubits=int(np.log2(len(result)))
+    bars=ax.barh(allstates,result)
+    ax.set_yticks(allstates)
+    ax.set_yticklabels(['|{}>'.format(bin(i)[2:].zfill(numQubits)) for i in allstates])
+    ax.set_ylabel('States')
+    ax.set_xlabel('Frequencies')
+    ax.set_xlim(0,result.max()*1.2)
+    ax.set_title('Result of {} Measurements'.format(int(np.sum(result))))
+    if annotate:
+        for bar in bars:
+            w=int(bar.get_width())
+            ax.annotate(str(w),
+                    xy=(w,bar.get_y()+bar.get_height()/2),
+                    xytext=(1,0),
+                    textcoords='offset points',
+                    ha='left', va='center')
+    plt.xticks(rotation=45)
+    fig.tight_layout()
+    fig.savefig(histfilename, dpi=300)
+    return histfilename
