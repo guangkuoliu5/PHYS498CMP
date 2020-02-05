@@ -1,0 +1,45 @@
+NOT n ~ 
+H n
+P n pi
+H n
+
+Rz n theta~
+P n theta/2
+NOT n 
+P n -theta/2
+NOT n
+
+~
+
+P n theta/2
+H n
+P n pi
+H n
+P n -theta/2
+H n
+P n pi
+H n
+
+CRz c t theta~
+P t theta/2
+CNOT c t 
+P t -theta/2
+CNOT c t
+
+CP c t theta ~
+P t theta/2
+NOT t
+P t theta/2
+NOT t
+CRz c t theta
+
+SWAP n m 
+CNOT n m
+H n
+H m
+CNOT n m
+H n 
+H m
+CNOT n m
+
+

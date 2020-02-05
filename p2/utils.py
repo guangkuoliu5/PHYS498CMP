@@ -86,7 +86,8 @@ def tensorMe(listOfMatrices):
 def tensorMe_sparse(listOfMatrices):
     ret=listOfMatrices[0]
     for M in listOfMatrices[1:]:
-        ret=sparse.kron(ret,M)
+        ret=sparse.kron(ret,M,format='csr')
+    #print(type(ret))
     return ret
 
 def HadamardArray(i,k):
@@ -121,7 +122,9 @@ def CNOTArray_sparse(c, t, n):
         row.append(int(bra,2))
         col.append(int(ket,2))
         data.append(1+0j)
-    return sparse.csr_matrix((data,(row,col)), shape=(size,size))
+    ret = sparse.csr_matrix((data,(row,col)), shape=(size,size))
+    #print(type(ret))
+    return ret
 
 def PArray(i,k,phi):
     listOfMatrices=[np.eye(2) if (i!=j) else np.array([[1,0],[0,np.exp(phi*1j)]]) for j in range(k)]
