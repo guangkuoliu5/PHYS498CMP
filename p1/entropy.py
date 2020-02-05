@@ -13,8 +13,6 @@ xarr=np.array(xarr)
 yarr=np.array(yarr)
 #print(len(yarr[int(8000/step):]))
 aveH=np.average(yarr[int(8000/step):])
-print(aveH)
-'''
 y2arr=np.array([aveH for i in range(0,10001,step)])
 plt.plot(xarr,yarr, 'c-')
 plt.plot(xarr,y2arr, 'r-')
@@ -26,5 +24,4 @@ plt.yticks(np.linspace(min(yarr), max(yarr),10))
 plt.show()
 plt.savefig('img/entropy.png', dpi=300)
 plt.close()
-'''
 

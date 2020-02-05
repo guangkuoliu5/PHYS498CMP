@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import sparse
 import matplotlib.pyplot as plt
 from datetime import datetime
 def StateToVec(myState):
@@ -82,11 +83,20 @@ def tensorMe(listOfMatrices):
     for M in listOfMatrices[1:]:
         ret=np.kron(ret,M)
     return ret
+def tensorMe_sparse(listOfMatrices):
+    ret=listOfMatrices[0]
+    for M in listOfMatrices[1:]:
+        ret=sparse.kron(ret,M)
+    return ret
 
 def HadamardArray(i,k):
     r=np.sqrt(0.5)
     listOfMatrices=[np.eye(2) if (i!=j) else np.array([[r,r],[r,-r]]) for j in range(k) ] 
     return tensorMe(listOfMatrices)
+def HadamardArray_sparse(i,k):
+    r=np.sqrt(0.5)
+    listOfMatrices=[sparse.csr_matrix(np.eye(2)) if (i!=j) else sparse.csr_matrix(np.array([[r,r],[r,-r]])) for j in range(k) ] 
+    return tensorMe_sparse(listOfMatrices)
 
 def CNOTArray(c, t, n):
     size=2**n
@@ -98,10 +108,27 @@ def CNOTArray(c, t, n):
             ket=bra[:t]+str(1- int(bra[t]))+bra[t+1:]
         ret[int(bra,2),int(ket,2)]=1.
     return ret
+def CNOTArray_sparse(c, t, n):
+    size=2**n
+    row=[]
+    col=[]
+    data=[]
+    for i in range(size):
+        bra=bin(i)[2:].zfill(n)
+        ket=bra
+        if bra[c]=='1':
+            ket=bra[:t]+str(1- int(bra[t]))+bra[t+1:]
+        row.append(int(bra,2))
+        col.append(int(ket,2))
+        data.append(1+0j)
+    return sparse.csr_matrix((data,(row,col)), shape=(size,size))
 
 def PArray(i,k,phi):
     listOfMatrices=[np.eye(2) if (i!=j) else np.array([[1,0],[0,np.exp(phi*1j)]]) for j in range(k)]
     return tensorMe(listOfMatrices)
+def PArray_sparse(i,k,phi):
+    listOfMatrices=[sparse.csr_matrix(np.eye(2)) if (i!=j) else sparse.csr_matrix(np.array([[1,0],[0,np.exp(phi*1j)]])) for j in range(k)]
+    return tensorMe_sparse(listOfMatrices)
 
 def PArray_braket(c,n,phi):
     size=2**n
