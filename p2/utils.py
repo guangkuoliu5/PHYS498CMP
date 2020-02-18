@@ -87,8 +87,10 @@ def tensorMe_sparse(listOfMatrices):
     ret=listOfMatrices[0]
     for M in listOfMatrices[1:]:
         ret=sparse.kron(ret,M,format='csr')
-    #print(type(ret))
     return ret
+
+def RemoveDuplicates(myState):
+    return VecToState(StateToVec(myState))
 
 def HadamardArray(i,k):
     r=np.sqrt(0.5)
@@ -98,6 +100,19 @@ def HadamardArray_sparse(i,k):
     r=np.sqrt(0.5)
     listOfMatrices=[sparse.csr_matrix(np.eye(2)) if (i!=j) else sparse.csr_matrix(np.array([[r,r],[r,-r]])) for j in range(k) ] 
     return tensorMe_sparse(listOfMatrices)
+def Hadamard_nocom(i,n,inputState):
+    ret=[]
+    for (c_k, v_k) in inputState:
+        if v_k[i]=='0':
+            ret.append((c_k/np.sqrt(2), v_k))
+            ret.append((c_k/np.sqrt(2), v_k[:i]+'1'+v_k[i+1:]))
+        else:
+            ret.append((-c_k/np.sqrt(2), v_k))
+            ret.append((c_k/np.sqrt(2), v_k[:i]+'0'+v_k[i+1:]))
+    return RemoveDuplicates(ret)
+def Hadamard(i,n,inputState):
+    return [dummpy for dummy in [
+    
 
 def CNOTArray(c, t, n):
     size=2**n
@@ -160,6 +175,7 @@ def initState(kind, param):
         return initState_file(param)
     else:
         return initState_basis(param)
+
 
 def measure(stateVec, numTrials=100):
     n=len(stateVec)
