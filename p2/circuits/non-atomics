@@ -27,10 +27,7 @@ P t -theta/2
 CNOT c t
 
 CP c t theta ~
-P t theta/2
-CNOT t
-P t theta/2
-CNOT t
+P c theta/2
 CRz c t theta
 
 SWAP n m 
