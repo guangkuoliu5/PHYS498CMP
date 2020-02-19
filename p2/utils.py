@@ -12,7 +12,8 @@ def VecToState(myVec):
     nqubits=(int)(np.log2(len(myVec)))
     myState=[]
     for i in range(len(myVec)):
-        if(myVec[i]!=0+0j):
+        if(abs(myVec[i])>1e-10):
+            #print("haha: ", myVec[i])
             myState.append((myVec[i],bin(i)[2:].zfill(nqubits)))
     return myState
     
@@ -111,7 +112,14 @@ def Hadamard_nocom(i,n,inputState):
             ret.append((c_k/np.sqrt(2), v_k[:i]+'0'+v_k[i+1:]))
     return RemoveDuplicates(ret)
 def Hadamard(i,n,inputState):
-    return [dummpy for dummy in [
+    ret= [dummy for (c_k, v_k) in inputState  
+     for dummy in (
+            [(c_k/np.sqrt(2), v_k), (c_k/np.sqrt(2), v_k[:i]+'1'+v_k[i+1:])] 
+            if v_k[i]=='0' else
+            [(-c_k/np.sqrt(2), v_k), (c_k/np.sqrt(2), v_k[:i]+'0'+v_k[i+1:])] )
+            ]
+    return RemoveDuplicates(ret)
+        
     
 
 def CNOTArray(c, t, n):
@@ -139,6 +147,14 @@ def CNOTArray_sparse(c, t, n):
         data.append(1+0j)
     ret = sparse.csr_matrix((data,(row,col)), shape=(size,size))
     #print(type(ret))
+    return ret
+def CNOT(c, t, n, inputState):
+    ret= [(c_k, v_k) if v_k[c]=='0' else (c_k, v_k[:t]+str((int(v_k[t])+1)%2)+v_k[t+1:]) for (c_k, v_k) in inputState]
+    return ret
+
+
+def P(i,k,phi, inputState):
+    ret= [(c_k, v_k) if v_k[i]=='0' else (np.exp(phi*1j)*c_k, v_k) for (c_k, v_k) in inputState]
     return ret
 
 def PArray(i,k,phi):
