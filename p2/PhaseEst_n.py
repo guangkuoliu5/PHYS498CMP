@@ -1,17 +1,27 @@
 from utils import *
+from QFT import *
 from precompiler import *
 from datetime import datetime
 import sys
 import numpy as np
-filename='PhaseEst/PhaseEst_1.temp.circuit'
-def write_phase_circuit_1(phase, filename):
+
+filename='PhaseEst/PhaseEst_n.temp.circuit'
+n=6
+def write_phase_circuit_n(n,phase, filename):
     with open(filename, 'w') as out:
-        out.write('2\nH 0\nCPHASE 0 1 {}\nH 0'.format(phase))
+        out.write('{}\n'.format(n+1))
+        for i in range(n):
+            out.write('H {}\n'.format(i))
+        for i in range(n):
+            for j in range(2**(n-i-1)):
+                out.write('CPHASE {} {} {}\n'.format(i,n,phase))
+        out.write(get_QFT_inv(n))
+        
 
 est_x=[]
 est_y=[]
-for phase in [0.1432394487827058*2*np.pi]: #np.linspace(0,2*np.pi,100):
-    write_phase_circuit_1(phase, filename)
+for phase in [0.1432394487827058*2*np.pi]:#np.linspace(0,2*np.pi,100):##  
+    write_phase_circuit_n(n, phase, filename)
     precompile(filename)
     with open(filename+'.compiled','r') as circuit:
         numQubit=int(circuit.readline())
@@ -32,31 +42,23 @@ for phase in [0.1432394487827058*2*np.pi]: #np.linspace(0,2*np.pi,100):
             if gate=='MEASURE':
                 result=measure(StateToVec(state), numTrials=1000)
                 break
-            print(line)
+            #print(line)
             #print(state)
-            PrettyPrintBinary(state)
+            #PrettyPrintBinary(state)
         newstate=[(c,v[:-1]) for (c,v) in state]
         result=measure(StateToVec(newstate), numTrials=1000)
-        createHist_Phase_Est(result)
-        est_x.append(phase/2/np.pi)
-        est_y.append(np.argmax(result)/(2**(numQubit-1)))
-        print('State: ', newstate)
-        print('est: ', est_y[-1])
-
-'''
+        createHist_Phase_Est(result, annotate=False)
+        est_x.append(phase/(2*np.pi))
+        est_y.append(np.argmax(result)/2**(numQubit-1))  #/(2**(numQubit-1))*2*np.pi)
+        #print('State: ', newstate)
+        #print('est: ', est_y[-1])
+        '''
 plt.plot(est_x, est_y, '.', label='Phase Estimation')
 plt.plot(est_x, est_x, '--', label='Actual Phase')
 plt.xlabel(r'$\phi/(2\pi)$')
 plt.ylabel(r'$\theta_j$')
-plt.title('Phase Estimation Using One Upper Qubit')
+plt.title('Phase Estimation Using Six Upper Qubit')
 plt.legend()
 #plt.show()
-plt.savefig('img/Phase_Est_1.png',dpi=300)
-
+plt.savefig('img/Phase_Est_6.png',dpi=300)
 '''
-        
-
-
-        
-
-

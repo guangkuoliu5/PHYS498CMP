@@ -14,7 +14,7 @@ def write_phase_circuit_2(phase, filename):
 
 est_x=[]
 est_y=[]
-for phase in np.linspace(0,2*np.pi,100): #[3/4*2*np.pi]: #
+for phase in [0.1432394487827058*2*np.pi]:#np.linspace(0,2*np.pi,100): #[3/4*2*np.pi]: #
     write_phase_circuit_2(phase, filename)
     precompile(filename)
     with open(filename+'.compiled','r') as circuit:
@@ -40,20 +40,20 @@ for phase in np.linspace(0,2*np.pi,100): #[3/4*2*np.pi]: #
             #print(state)
             #PrettyPrintBinary(state)
         newstate=[(c,v[:-1]) for (c,v) in state]
-        result=measure(StateToVec(newstate), numTrials=100)
-        est_x.append(phase/(2*np.pi)*2**(numQubit-1))
-        est_y.append(np.argmax(result))  #/(2**(numQubit-1))*2*np.pi)
-        print('State: ', newstate)
-        print('est: ', est_y[-1])
-
+        result=measure(StateToVec(newstate), numTrials=1000)
+        createHist_Phase_Est(result)
+        est_x.append(phase/(2*np.pi))
+        est_y.append(np.argmax(result)/2**(numQubit-1))  #/(2**(numQubit-1))*2*np.pi)
+        #print('State: ', newstate)
+        #print('est: ', est_y[-1])
+'''
 plt.plot(est_x, est_y, '.', label='Phase Estimation')
 plt.plot(est_x, est_x, '--', label='Actual Phase')
+plt.xlabel(r'$\phi/(2\pi)$')
+plt.ylabel(r'$\theta_j$')
+plt.title('Phase Estimation Using Two Upper Qubit')
 plt.legend()
-plt.show()
-
-        
-
-
-        
-
+#plt.show()
+plt.savefig('img/Phase_Est_2.png',dpi=300)
+'''
 

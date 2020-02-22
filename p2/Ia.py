@@ -1,5 +1,5 @@
-from utils import *
 from datetime import datetime
+from utils import *
 import sys
 import numpy as np
 with open(sys.argv[1],'r') as circuit:
@@ -24,11 +24,13 @@ with open(sys.argv[1],'r') as circuit:
             break
     if gate!='MEASURE':
         stateVec=totalMatrix@stateVec
-    np.set_printoptions(linewidth=300, precision=3, suppress=True, threshold=1000)
+    np.set_printoptions(linewidth=300, precision=3, suppress=True, threshold=100)
     print('The entire circuit as a matrix is: ')
     print(totalMatrix)
-    compareM=np.array([[np.exp(2j*np.pi/8*j*k)/np.sqrt(8) for j in range(8)] for k in range(8)])
+    N=2**numQubit
+    compareM=np.array([[np.exp(2j*np.pi/N*j*k)/np.sqrt(N) for j in range(N)] for k in range(N)])
     print(totalMatrix-compareM)
+    print(np.linalg.norm(totalMatrix-compareM))
     #print(totalMatrix@np.matrix(totalMatrix).getH())
     print('\nThe final state is: ')
     PrettyPrintBinary(VecToState(stateVec))

@@ -226,3 +226,31 @@ def createHist(result,annotate=True):
     fig.tight_layout()
     fig.savefig(histfilename, dpi=300)
     return histfilename
+
+def createHist_Phase_Est(result,mark=0.1432, annotate=True):
+    histfilename='img/result_'+datetime.now().strftime('%m%d_%H%M')+'.png'
+    fig, ax=plt.subplots()
+    allstates=[i for i in range(len(result))]
+    numQubits=int(np.log2(len(result)))
+    bars=ax.bar(allstates,result)
+    ax.set_xticks(allstates+[mark*len(result)])
+    ax.set_xticklabels(['{}/{}'.format(i, len(result))  if i!=0 else '0' for i in allstates]+[str(mark)])
+    ax.set_xlabel(r'$\theta_j$')
+    ax.set_ylabel('Frequencies of Measurements')
+    ax.set_ylim(0,result.max()*1.2)
+    ax.set_xlim(-0.01,len(result)-1+0.01)
+    ax.set_title('Result of {} Measurements'.format(int(np.sum(result))))
+    if annotate:
+        for bar in bars:
+            w=int(bar.get_width())
+            ax.annotate(str(w),
+                    xy=(w,bar.get_y()+bar.get_height()/2),
+                    xytext=(1,0),
+                    textcoords='offset points',
+                    ha='left', va='center')
+    plt.xticks(rotation=45)
+    fig.tight_layout()
+    #fig.show()
+    fig.set_size_inches(18.5, 10.5)
+    fig.savefig(histfilename, dpi=100)
+    return histfilename
