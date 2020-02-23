@@ -1,0 +1,76 @@
+from utils import *
+from QFT import *
+from precompiler import *
+from datetime import datetime
+import sys
+import numpy as np
+
+filename='PhaseEst/PhaseEst_U.temp.circuit'
+n=6
+def write_phase_circuit_n(n, filename):
+    with open(filename, 'w') as out:
+        out.write('{}\n'.format(n+2))
+        for i in range(n):
+            out.write('H {}\n'.format(i))
+        for i in range(n):
+            for j in range(2**(n-i-1)):
+                out.write('CPHASE {} {} {}\n'.format(i,n,0.5))
+                out.write('CNOT {} {}\n'.format(i,n))
+                out.write('CPHASE {} {} {}\n'.format(i,n+1,0.8))
+                out.write('CNOT {} {}\n'.format(i,n+1))
+        out.write(get_QFT_inv(n))
+def write_phase_circuit_n_ez(n,phase, filename):
+    with open(filename, 'w') as out:
+        out.write('{}\n'.format(n+1))
+        for i in range(n):
+            out.write('H {}\n'.format(i))
+        for i in range(n):
+            out.write('CPHASE {} {} {}\n'.format(i,n,phase*2**(n-i-1)))
+        out.write(get_QFT_inv(n))
+        
+
+#est_x=[]
+#est_y=[]
+write_phase_circuit_n(n, filename)
+precompile(filename)
+with open(filename+'.compiled','r') as circuit:
+    numQubit=int(circuit.readline())
+    state=[(np.sqrt(0.3)+0j, '0'*(numQubit-2)+'00'),(np.sqrt(0.7)+0j, '0'*(numQubit-2)+'11')]
+    for line in circuit.readlines():
+        words=line.split()
+        gate=words[0]
+        if gate=='INITSTATE':
+            stateVec=initState(words[1], words[2])
+            state=VecToState(stateVec)
+            #PrettyPrintBinary(VecToState(stateVec))
+        if gate=='H':
+            state=Hadamard(int(words[1]), numQubit, state)
+        if gate=='P':
+            state=P(int(words[1]), numQubit, float(words[2]), state)
+        if gate=='CNOT':
+            state=CNOT(int(words[1]), int(words[2]), numQubit,state)
+        if gate=='MEASURE':
+            result=measure(StateToVec(state), numTrials=1000)
+            break
+        #print(line)
+        #print(state)
+        #PrettyPrintBinary(state)
+    result=measure(StateToVec(state), numTrials=1000)
+    newresult=np.zeros(int(len(result)/4))
+    for i in range(len(result)):
+        newresult[int(np.floor(i/4))]+=result[i]
+    createHist_Phase_Est_nomark(newresult, mark=0.5/(2*np.pi),annotate=False)
+    #est_x.append(phase/(2*np.pi))
+    #est_y.append(np.argmax(result)/2**(numQubit-1))  #/(2**(numQubit-1))*2*np.pi)
+    #print('State: ', newstate)
+    #print('est: ', est_y[-1])
+'''
+plt.plot(est_x, est_y, '.', label='Phase Estimation')
+plt.plot(est_x, est_x, '--', label='Actual Phase')
+plt.xlabel(r'$\phi/(2\pi)$')
+plt.ylabel(r'$\theta_j$')
+plt.title('Phase Estimation Using Six Upper Qubit')
+plt.legend()
+#plt.show()
+plt.savefig('img/Phase_Est_6.png',dpi=300)
+'''

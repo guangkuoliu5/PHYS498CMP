@@ -1,0 +1,511 @@
+3 is a prime
+5 is a prime
+7 is a prime
+9: by randoming, got factor 3
+11 is a prime
+13 is a prime
+15: Found (N,x,r)=15,2,4 with factor 3
+17 is a prime
+19 is a prime
+21: Found (N,x,r)=21,2,6 with factor 7
+23 is a prime
+25: by randoming, got factor 5
+27: trivially, N=3^a for some int a
+29 is a prime
+31 is a prime
+33: Found (N,x,r)=33,5,10 with factor 11
+35: Found (N,x,r)=35,3,12 with factor 7
+37 is a prime
+39: Found (N,x,r)=39,4,6 with factor 3
+41 is a prime
+43 is a prime
+45: by randoming, got factor 3
+47 is a prime
+49: by randoming, got factor 7
+51: Found (N,x,r)=51,7,16 with factor 3
+53 is a prime
+55: Found (N,x,r)=55,3,20 with factor 11
+57: by randoming, got factor 3
+59 is a prime
+61 is a prime
+63: by randoming, got factor 3
+65: Found (N,x,r)=65,6,12 with factor 5
+67 is a prime
+69: Found (N,x,r)=69,2,22 with factor 23
+71 is a prime
+73 is a prime
+75: by randoming, got factor 5
+77: Found (N,x,r)=77,8,10 with factor 7
+79 is a prime
+81: trivially, N=3^a for some int a
+83 is a prime
+85: Found (N,x,r)=85,3,16 with factor 5
+87: Found (N,x,r)=87,8,28 with factor 3
+89 is a prime
+91: Found (N,x,r)=91,4,6 with factor 7
+93: Found (N,x,r)=93,2,10 with factor 31
+95: Found (N,x,r)=95,8,12 with factor 19
+97 is a prime
+99: by randoming, got factor 3
+101 is a prime
+103 is a prime
+105: by randoming, got factor 7
+107 is a prime
+109 is a prime
+111: by randoming, got factor 3
+113 is a prime
+115: by randoming, got factor 5
+117: Found (N,x,r)=117,7,12 with factor 9
+119: Found (N,x,r)=119,9,24 with factor 7
+121: by randoming, got factor 11
+123: by randoming, got factor 3
+125: trivially, N=5^a for some int a
+127 is a prime
+129: Found (N,x,r)=129,7,6 with factor 3
+131 is a prime
+133: Found (N,x,r)=133,8,6 with factor 7
+135: Found (N,x,r)=135,8,12 with factor 27
+137 is a prime
+139 is a prime
+141: by randoming, got factor 3
+143: Found (N,x,r)=143,8,20 with factor 11
+145: Found (N,x,r)=145,7,28 with factor 29
+147: Found (N,x,r)=147,8,14 with factor 49
+149 is a prime
+151 is a prime
+153: Found (N,x,r)=153,2,24 with factor 9
+155: Found (N,x,r)=155,4,10 with factor 31
+157 is a prime
+159: by randoming, got factor 3
+161: by randoming, got factor 7
+163 is a prime
+165: by randoming, got factor 3
+167 is a prime
+169: by randoming, got factor 13
+171: by randoming, got factor 3
+173 is a prime
+175: by randoming, got factor 7
+177: by randoming, got factor 3
+179 is a prime
+181 is a prime
+183: by randoming, got factor 3
+185: by randoming, got factor 5
+187: by randoming, got factor 11
+189: by randoming, got factor 3
+191 is a prime
+193 is a prime
+195: by randoming, got factor 3
+197 is a prime
+199 is a prime
+201: by randoming, got factor 3
+203: Found (N,x,r)=203,8,28 with factor 7
+205: by randoming, got factor 5
+207: Found (N,x,r)=207,10,22 with factor 9
+209: by randoming, got factor 11
+211 is a prime
+213: by randoming, got factor 3
+215: Found (N,x,r)=215,7,12 with factor 43
+217: Found (N,x,r)=217,5,6 with factor 31
+219: by randoming, got factor 3
+221: Found (N,x,r)=221,4,12 with factor 13
+223 is a prime
+225: by randoming, got factor 3
+227 is a prime
+229 is a prime
+231: by randoming, got factor 3
+233 is a prime
+235: by randoming, got factor 5
+237: Found (N,x,r)=237,8,26 with factor 79
+239 is a prime
+241 is a prime
+243: trivially, N=3^a for some int a
+245: Found (N,x,r)=245,13,28 with factor 49
+247: Found (N,x,r)=247,7,12 with factor 19
+249: by randoming, got factor 3
+251 is a prime
+253: by randoming, got factor 11
+255: Found (N,x,r)=255,11,16 with factor 15
+257 is a prime
+259: by randoming, got factor 7
+261: by randoming, got factor 3
+263 is a prime
+265: Found (N,x,r)=265,6,26 with factor 5
+267: by randoming, got factor 3
+269 is a prime
+271 is a prime
+273: by randoming, got factor 7
+275: Found (N,x,r)=275,9,10 with factor 11
+277 is a prime
+279: Found (N,x,r)=279,8,10 with factor 31
+281 is a prime
+283 is a prime
+285: by randoming, got factor 3
+287: by randoming, got factor 7
+289: by randoming, got factor 17
+291: by randoming, got factor 3
+293 is a prime
+295: by randoming, got factor 5
+297: by randoming, got factor 3
+299: Found (N,x,r)=299,12,22 with factor 23
+301: Found (N,x,r)=301,8,14 with factor 7
+303: Found (N,x,r)=303,10,4 with factor 3
+305: Found (N,x,r)=305,13,12 with factor 61
+307 is a prime
+309: by randoming, got factor 3
+311 is a prime
+313 is a prime
+315: Found (N,x,r)=315,13,12 with factor 63
+317 is a prime
+319: Found (N,x,r)=319,12,4 with factor 11
+321: by randoming, got factor 3
+323: Found (N,x,r)=323,16,18 with factor 19
+325: Found (N,x,r)=325,12,20 with factor 13
+327: Found (N,x,r)=327,8,12 with factor 3
+329: by randoming, got factor 7
+331 is a prime
+333: Found (N,x,r)=333,4,18 with factor 9
+335: by randoming, got factor 5
+337 is a prime
+339: Found (N,x,r)=339,14,28 with factor 3
+341: by randoming, got factor 11
+343: trivially, N=7^a for some int a
+345: by randoming, got factor 15
+347 is a prime
+349 is a prime
+351: by randoming, got factor 3
+353 is a prime
+355: Found (N,x,r)=355,17,20 with factor 71
+357: by randoming, got factor 17
+359 is a prime
+361: by randoming, got factor 19
+363: Found (N,x,r)=363,10,22 with factor 3
+365: Found (N,x,r)=365,4,18 with factor 73
+367 is a prime
+369: by randoming, got factor 3
+371: Found (N,x,r)=371,13,26 with factor 53
+373 is a prime
+375: by randoming, got factor 3
+377: by randoming, got factor 13
+379 is a prime
+381: by randoming, got factor 3
+383 is a prime
+385: by randoming, got factor 5
+387: Found (N,x,r)=387,7,6 with factor 9
+389 is a prime
+391: Found (N,x,r)=391,16,22 with factor 23
+393: by randoming, got factor 3
+395: by randoming, got factor 5
+397 is a prime
+399: by randoming, got factor 7
+401 is a prime
+403: Found (N,x,r)=403,6,12 with factor 31
+405: by randoming, got factor 15
+407: Found (N,x,r)=407,6,20 with factor 11
+409 is a prime
+411: by randoming, got factor 3
+413: by randoming, got factor 7
+415: by randoming, got factor 5
+417: by randoming, got factor 3
+419 is a prime
+421 is a prime
+423: by randoming, got factor 3
+425: by randoming, got factor 17
+427: Found (N,x,r)=427,20,10 with factor 61
+429: by randoming, got factor 3
+431 is a prime
+433 is a prime
+435: by randoming, got factor 5
+437: Found (N,x,r)=437,20,22 with factor 19
+439 is a prime
+441: Found (N,x,r)=441,8,14 with factor 49
+443 is a prime
+445: Found (N,x,r)=445,11,22 with factor 5
+447: by randoming, got factor 3
+449 is a prime
+451: Found (N,x,r)=451,21,20 with factor 11
+453: by randoming, got factor 3
+455: Found (N,x,r)=455,18,12 with factor 7
+457 is a prime
+459: by randoming, got factor 3
+461 is a prime
+463 is a prime
+465: by randoming, got factor 3
+467 is a prime
+469: by randoming, got factor 7
+471: Found (N,x,r)=471,4,26 with factor 3
+473: by randoming, got factor 11
+475: Found (N,x,r)=475,18,4 with factor 19
+477: by randoming, got factor 3
+479 is a prime
+481: Found (N,x,r)=481,10,6 with factor 37
+483: by randoming, got factor 3
+485: Found (N,x,r)=485,18,16 with factor 5
+487 is a prime
+489: by randoming, got factor 3
+491 is a prime
+493: Found (N,x,r)=493,13,28 with factor 29
+495: by randoming, got factor 9
+497: by randoming, got factor 7
+499 is a prime
+501: by randoming, got factor 3
+503 is a prime
+505: by randoming, got factor 5
+507: by randoming, got factor 3
+509 is a prime
+511: Found (N,x,r)=511,10,24 with factor 7
+513: Found (N,x,r)=513,5,18 with factor 19
+515: by randoming, got factor 5
+517: by randoming, got factor 11
+519: by randoming, got factor 3
+521 is a prime
+523 is a prime
+525: by randoming, got factor 15
+527: Found (N,x,r)=527,16,10 with factor 31
+529: by randoming, got factor 23
+531: by randoming, got factor 3
+533: by randoming, got factor 13
+535: by randoming, got factor 5
+537: by randoming, got factor 3
+539: by randoming, got factor 11
+541 is a prime
+543: by randoming, got factor 3
+545: by randoming, got factor 5
+547 is a prime
+549: Found (N,x,r)=549,8,20 with factor 9
+551: Found (N,x,r)=551,18,28 with factor 19
+553: Found (N,x,r)=553,15,26 with factor 7
+555: by randoming, got factor 5
+557 is a prime
+559: by randoming, got factor 13
+561: by randoming, got factor 3
+563 is a prime
+565: by randoming, got factor 5
+567: Found (N,x,r)=567,8,18 with factor 7
+569 is a prime
+571 is a prime
+573: Found (N,x,r)=573,7,10 with factor 3
+575: by randoming, got factor 5
+577 is a prime
+579: Found (N,x,r)=579,16,24 with factor 3
+581: by randoming, got factor 7
+583: by randoming, got factor 11
+585: by randoming, got factor 9
+587 is a prime
+589: by randoming, got factor 19
+591: by randoming, got factor 3
+593 is a prime
+595: by randoming, got factor 7
+597: by randoming, got factor 3
+599 is a prime
+601 is a prime
+603: by randoming, got factor 3
+605: by randoming, got factor 5
+607 is a prime
+609: by randoming, got factor 3
+611: by randoming, got factor 13
+613 is a prime
+615: Found (N,x,r)=615,8,20 with factor 3
+617 is a prime
+619 is a prime
+621: by randoming, got factor 3
+623: by randoming, got factor 7
+625: trivially, N=5^a for some int a
+627: Found (N,x,r)=627,20,10 with factor 209
+629: by randoming, got factor 17
+631 is a prime
+633: by randoming, got factor 3
+635: Found (N,x,r)=635,4,14 with factor 127
+637: by randoming, got factor 7
+639: by randoming, got factor 3
+641 is a prime
+643 is a prime
+645: by randoming, got factor 3
+647 is a prime
+649: by randoming, got factor 11
+651: by randoming, got factor 21
+653 is a prime
+655: by randoming, got factor 5
+657: by randoming, got factor 3
+659 is a prime
+661 is a prime
+663: Found (N,x,r)=663,25,8 with factor 39
+665: by randoming, got factor 7
+667: by randoming, got factor 23
+669: by randoming, got factor 3
+671: Found (N,x,r)=671,3,10 with factor 11
+673 is a prime
+675: by randoming, got factor 5
+677 is a prime
+679: by randoming, got factor 7
+681: by randoming, got factor 3
+683 is a prime
+685: by randoming, got factor 5
+687: by randoming, got factor 3
+689: by randoming, got factor 13
+691 is a prime
+693: Found (N,x,r)=693,8,10 with factor 7
+695: by randoming, got factor 5
+697: Found (N,x,r)=697,9,8 with factor 41
+699: by randoming, got factor 3
+701 is a prime
+703: Found (N,x,r)=703,4,18 with factor 19
+705: by randoming, got factor 3
+707: by randoming, got factor 7
+709 is a prime
+711: by randoming, got factor 3
+713: by randoming, got factor 23
+715: Found (N,x,r)=715,14,10 with factor 143
+717: by randoming, got factor 3
+719 is a prime
+721: by randoming, got factor 7
+723: Found (N,x,r)=723,2,24 with factor 3
+725: by randoming, got factor 5
+727 is a prime
+729: trivially, N=3^a for some int a
+731: by randoming, got factor 17
+733 is a prime
+735: by randoming, got factor 3
+737: by randoming, got factor 11
+739 is a prime
+741: Found (N,x,r)=741,11,12 with factor 57
+743 is a prime
+745: by randoming, got factor 5
+747: by randoming, got factor 9
+749: by randoming, got factor 7
+751 is a prime
+753: by randoming, got factor 3
+755: by randoming, got factor 5
+757 is a prime
+759: by randoming, got factor 3
+761 is a prime
+763: by randoming, got factor 7
+765: by randoming, got factor 5
+767: by randoming, got factor 13
+769 is a prime
+771: by randoming, got factor 3
+773 is a prime
+775: Found (N,x,r)=775,4,10 with factor 31
+777: Found (N,x,r)=777,4,18 with factor 21
+779: Found (N,x,r)=779,20,20 with factor 19
+781: Found (N,x,r)=781,23,14 with factor 11
+783: by randoming, got factor 3
+785: Found (N,x,r)=785,12,12 with factor 157
+787 is a prime
+789: by randoming, got factor 3
+791: Found (N,x,r)=791,15,4 with factor 7
+793: Found (N,x,r)=793,27,10 with factor 13
+795: by randoming, got factor 5
+797 is a prime
+799: by randoming, got factor 17
+801: by randoming, got factor 3
+803: by randoming, got factor 11
+805: by randoming, got factor 5
+807: by randoming, got factor 3
+809 is a prime
+811 is a prime
+813: by randoming, got factor 3
+815: by randoming, got factor 5
+817: Found (N,x,r)=817,7,6 with factor 19
+819: by randoming, got factor 21
+821 is a prime
+823 is a prime
+825: Found (N,x,r)=825,28,20 with factor 33
+827 is a prime
+829 is a prime
+831: by randoming, got factor 3
+833: by randoming, got factor 17
+835: by randoming, got factor 5
+837: by randoming, got factor 9
+839 is a prime
+841: by randoming, got factor 29
+843: by randoming, got factor 3
+845: by randoming, got factor 5
+847: by randoming, got factor 7
+849: by randoming, got factor 3
+851: by randoming, got factor 23
+853 is a prime
+855: by randoming, got factor 3
+857 is a prime
+859 is a prime
+861: by randoming, got factor 7
+863 is a prime
+865: by randoming, got factor 5
+867: by randoming, got factor 3
+869: by randoming, got factor 11
+871: by randoming, got factor 13
+873: by randoming, got factor 3
+875: by randoming, got factor 7
+877 is a prime
+879: by randoming, got factor 3
+881 is a prime
+883 is a prime
+885: by randoming, got factor 5
+887 is a prime
+889: by randoming, got factor 7
+891: by randoming, got factor 3
+893: by randoming, got factor 19
+895: by randoming, got factor 5
+897: by randoming, got factor 3
+899: by randoming, got factor 29
+901: Found (N,x,r)=901,16,26 with factor 53
+903: by randoming, got factor 3
+905: Found (N,x,r)=905,26,12 with factor 5
+907 is a prime
+909: by randoming, got factor 3
+911 is a prime
+913: by randoming, got factor 11
+915: by randoming, got factor 3
+917: by randoming, got factor 7
+919 is a prime
+921: by randoming, got factor 3
+923: by randoming, got factor 13
+925: by randoming, got factor 5
+927: by randoming, got factor 3
+929 is a prime
+931: by randoming, got factor 7
+933: by randoming, got factor 3
+935: by randoming, got factor 5
+937 is a prime
+939: by randoming, got factor 3
+941 is a prime
+943: by randoming, got factor 23
+945: by randoming, got factor 7
+947 is a prime
+949: Found (N,x,r)=949,7,24 with factor 13
+951: by randoming, got factor 3
+953 is a prime
+955: by randoming, got factor 5
+957: by randoming, got factor 3
+959: Found (N,x,r)=959,10,24 with factor 7
+961: by randoming, got factor 31
+963: by randoming, got factor 3
+965: by randoming, got factor 5
+967 is a prime
+969: by randoming, got factor 3
+971 is a prime
+973: by randoming, got factor 7
+975: Found (N,x,r)=975,8,20 with factor 3
+977 is a prime
+979: by randoming, got factor 11
+981: by randoming, got factor 3
+983 is a prime
+985: by randoming, got factor 5
+987: by randoming, got factor 3
+989: by randoming, got factor 23
+991 is a prime
+993: by randoming, got factor 3
+995: Found (N,x,r)=995,21,18 with factor 5
+997 is a prime
+999: by randoming, got factor 27
+1001: by randoming, got factor 11
+1003: by randoming, got factor 17
+1005: by randoming, got factor 5
+1007: by randoming, got factor 19
+1009 is a prime
+1011: by randoming, got factor 3
+1013 is a prime
+1015: by randoming, got factor 7
+1017: by randoming, got factor 9
+1019 is a prime
+1021 is a prime
+1023: by randoming, got factor 3

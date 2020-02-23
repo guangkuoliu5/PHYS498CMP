@@ -16,16 +16,24 @@ def write_phase_circuit_n(n,phase, filename):
             for j in range(2**(n-i-1)):
                 out.write('CPHASE {} {} {}\n'.format(i,n,phase))
         out.write(get_QFT_inv(n))
+def write_phase_circuit_n_ez(n,phase, filename):
+    with open(filename, 'w') as out:
+        out.write('{}\n'.format(n+1))
+        for i in range(n):
+            out.write('H {}\n'.format(i))
+        for i in range(n):
+            out.write('CPHASE {} {} {}\n'.format(i,n,phase*2**(n-i-1)))
+        out.write(get_QFT_inv(n))
         
 
 est_x=[]
 est_y=[]
-for phase in [0.1432394487827058*2*np.pi]:#np.linspace(0,2*np.pi,100):##  
-    write_phase_circuit_n(n, phase, filename)
+for phase in [0.5]:#[0.1432394487827058*2*np.pi]:#np.linspace(0,2*np.pi,100):##  
+    write_phase_circuit_n_ez(n, phase, filename)
     precompile(filename)
     with open(filename+'.compiled','r') as circuit:
         numQubit=int(circuit.readline())
-        state=[(1+0j, '0'*(numQubit-1)+'1')]
+        state=[(np.sqrt(0.3)+0j, '0'*(numQubit-1)+'0'),(np.sqrt(0.7)+0j, '0'*(numQubit-1)+'1')]
         for line in circuit.readlines():
             words=line.split()
             gate=words[0]
@@ -45,9 +53,11 @@ for phase in [0.1432394487827058*2*np.pi]:#np.linspace(0,2*np.pi,100):##
             #print(line)
             #print(state)
             #PrettyPrintBinary(state)
-        newstate=[(c,v[:-1]) for (c,v) in state]
-        result=measure(StateToVec(newstate), numTrials=1000)
-        createHist_Phase_Est(result, annotate=False)
+        result=measure(StateToVec(state), numTrials=1000)
+        newresult=np.zeros(int(len(result)/2))
+        for i in range(len(result)):
+            newresult[int(np.floor(i/2))]+=result[i]
+        createHist_Phase_Est(newresult, mark=0.5/(2*np.pi),annotate=False)
         est_x.append(phase/(2*np.pi))
         est_y.append(np.argmax(result)/2**(numQubit-1))  #/(2**(numQubit-1))*2*np.pi)
         #print('State: ', newstate)
