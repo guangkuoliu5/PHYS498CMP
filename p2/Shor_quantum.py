@@ -24,23 +24,23 @@ def quantum_find_r_sped(x,N):
             #out.write('CPHASE {} {} {}\n'.format(i,numQubit-1, phase*2**(topwires-1-i)))
         out.write(get_QFT_inv(topwires))
         out.write('MEASURE\n')
-    '''
     precompile('circuits/QPF_temp.circuit')
     result=II_run('circuits/QPF_temp.circuit.compiled')
     newresult=np.zeros(2**topwires)
     for i in range(len(result)):
         newresult[int(np.floor(i/(2**(numQubit-topwires))))]+=result[i]
-    #print(newresult)
+    print(newresult)
     #d=np.argmax(newresult)/(2**topwires)
     #darray=[i/(2**topwires) for i in range(len(newresult))]
     for j in range(20):
         d=np.random.choice(range(len(newresult)), p=np.array(newresult)/np.sum(newresult))
         r=abs(Fraction(d/(2**topwires)).limit_denominator(N).denominator)
+        print('d/topwire=',(d/(2**topwires)))
         print('trying r=',r)
         if (x**r)%N==1 and r!=0:
             return int(r)
-            '''
     return -1
+'''
 def quantum_find_r(x,N):
     with open('circuits/QPF_temp.circuit', 'w') as out:
         numQubit=int((np.ceil(np.log2(N))*2+1)+np.ceil(np.log2(N)))
@@ -72,7 +72,7 @@ def quantum_find_r(x,N):
             return int(r)
     return -1
 
-
+'''
 def shor(N):
     if isprime(N): 
         print('{} is a prime'.format(N))
