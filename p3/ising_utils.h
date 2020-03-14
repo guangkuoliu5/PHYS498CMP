@@ -20,6 +20,18 @@ double Energy(vector<vector<int>> &config){
 	}
 	return energy;
 }
+//Compute Magnetization
+double Mag2(vector<vector<int>> &config){
+	int w=config[0].size();
+	int h=config.size();
+	double mag=0;
+	for (int i=0; i<h; i++) {
+		for (int j=0; j<w; j++) {
+			mag+=config[i][j];
+		}
+	}
+	return mag*mag;
+}
 //Computing energy difference by flipping a spin. Time complexity: O(1)
 double deltaE(vector<vector<int>> &config, int i, int j){
 	int w=config[0].size();

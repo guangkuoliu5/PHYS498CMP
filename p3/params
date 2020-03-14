@@ -1,4 +1,4 @@
 beta=0.3
-Lx=3
-Ly=3
-outFile=out_3.0
+Lx=27
+Ly=27
+outFile=out_L27_0.3
