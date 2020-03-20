@@ -23,6 +23,9 @@ int main(){
 	vector<vector<int>> config(Ly, vector<int>(Lx,-1));
 	//config=fromString("-1 -1 -1\n-1 -1 1\n-1 -1 1");
 	for (int sweep=0;  sweep<5000; sweep++) {
+		if (sweep>=0) {
+			outFile<<Energy(config)/N<<" "<<Mag2(config)/pow(N,2)<<endl;
+		}
 		for (int flip=0; flip<N; flip++) {
 			int i = rand()%Ly;
 			int j = rand()%Lx;
@@ -30,11 +33,12 @@ int main(){
 				config[i][j]=-config[i][j];
 			}
 		}
-		if (sweep>=0) {
-			outFile<<Energy(config)<<" "<<Mag2(config)<<endl;
-		}
 		//if (sweep>=10) freq[toInt(config)]+=1;
 	}
+	outFile.close();
+	ofstream outSnapshot; outSnapshot.open("27data/snapshot_"+to_string(beta));
+	outSnapshot<<toString(config);
+	outSnapshot.close();
 	/*
 	ofstream outFile;
 	outFile.open(outFileName);

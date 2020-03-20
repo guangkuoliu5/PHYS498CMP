@@ -1,7 +1,0 @@
-#include<vector>
-#include<string>
-using namespace std;
-double Energy(vector<vector<int>> &config);
-double deltaE(vector<vector<int>> &config, int i, int j);
-vector<vector<int>>  fromString(string str);
-string  toString(vector<vector<int>> &config);
