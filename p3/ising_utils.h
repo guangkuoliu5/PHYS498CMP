@@ -46,6 +46,26 @@ double deltaE(vector<vector<int>> &config, int i, int j){
 	}
 	return dE;
 }
+vector<vector<int>> cg(vector<vector<int>> &config) {
+	int w=config[0].size();
+	int h=config.size();
+	vector<vector<int>> ret;
+	for (int i=0; i<h; i+=3) {
+		ret.push_back({});
+		for (int j=0; j<w; j+=3) {
+			int vote=0;
+			for (int ii=i; ii<i+3; ii++) {
+				for (int jj=j; jj<j+3; jj++) {
+					vote+=config[ii][jj];
+				}
+			}
+			ret[ret.size()-1].push_back(vote/abs(vote));
+		}
+	}
+	return ret;
+}
+
+			
 vector<vector<int>>  fromString(string str) {
 	vector<vector<int>> config;
 	stringstream ss(str);

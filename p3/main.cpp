@@ -24,6 +24,9 @@ int main(){
 	//config=fromString("-1 -1 -1\n-1 -1 1\n-1 -1 1");
 	for (int sweep=0;  sweep<5000; sweep++) {
 		if (sweep>=0) {
+			//outFile<<Energy(config)/N<<" "<<Mag2(config)/pow(N,2)<<endl;
+			//vector<vector<int>> config_cg=cg(config);
+			//int N_cg=N/9;
 			outFile<<Energy(config)/N<<" "<<Mag2(config)/pow(N,2)<<endl;
 		}
 		for (int flip=0; flip<N; flip++) {
@@ -36,9 +39,20 @@ int main(){
 		//if (sweep>=10) freq[toInt(config)]+=1;
 	}
 	outFile.close();
-	ofstream outSnapshot; outSnapshot.open("27data/snapshot_"+to_string(beta));
+/*
+	ofstream outSnapshot; outSnapshot.open("81data/snapshot_"+to_string(beta));
 	outSnapshot<<toString(config);
 	outSnapshot.close();
+	vector<vector<int>> config_cg=cg(config);
+	vector<vector<int>> config_cgcg=cg(config_cg);
+	ofstream outSnapshot_cg; outSnapshot_cg.open("81data_cg/snapshot_"+to_string(beta));
+	outSnapshot_cg<<toString(config_cg);
+	outSnapshot_cg.close();
+
+	ofstream outSnapshot_cgcg; outSnapshot_cgcg.open("81data_cgcg/snapshot_"+to_string(beta));
+	outSnapshot_cgcg<<toString(config_cgcg);
+	outSnapshot_cgcg.close();
+	*/
 	/*
 	ofstream outFile;
 	outFile.open(outFileName);
