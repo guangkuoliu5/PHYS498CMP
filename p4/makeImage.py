@@ -38,7 +38,7 @@ def MakeTree():
     tree[5,8]=1
     return tree
 
-
+'''
 face=MakeFace()
 print("This is the binary representation of the face")
 PrintImageNumber(face)
@@ -54,3 +54,4 @@ pylab.title("I am the best artistic rendition \n of a tree that Bryan could hand
 pylab.show()
 
 
+'''
