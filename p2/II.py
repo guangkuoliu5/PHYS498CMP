@@ -31,8 +31,9 @@ with open(sys.argv[1],'r') as circuit:
     if gate=='MEASURE':
         print('\nThe measurement result is: ')
         print(result)
-        print('\nThe histogram is saved to:')
-        print(createHist(result))
+        np.savetxt('qc.txt', result)
+        #print('\nThe histogram is saved to:')
+        #print(createHist(result))
         
 
 

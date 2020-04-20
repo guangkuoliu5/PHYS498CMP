@@ -1,0 +1,7 @@
+digraph G {
+19 [shape=circle, style=filled, fillcolor=red]
+63 [shape=circle, style=filled, fillcolor=red]
+32 [shape=circle, style=filled, fillcolor=red]
+32 -> 40;
+32 -> 0;
+}

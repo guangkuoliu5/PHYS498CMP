@@ -84,7 +84,7 @@ def plot_hamming(pmax=10,kmax=60):
 
 
 
-genhammingdata(100,65)
+#genhammingdata(100,65)
 #plot_hamming(100,65)
 
         
