@@ -6,7 +6,7 @@ np.set_printoptions(precision=3, suppress=True,linewidth=200)
 N1=27
 N2=27
 M=2
-Mh=0.2
+Mh=2
 t=0.3
 phi=0.7
 graphene=lattice2d(N1,N2,M,[1,0],[1/2,np.sqrt(3)/2], [[0,0],[0,1/np.sqrt(3)]])
@@ -40,8 +40,7 @@ for i in range(len(labels)):
 
 #print(H)
 #print(np.linalg.norm(H.H-H))
-print(np.min(np.abs(np.linalg.eigh(H)[0])))
-'''
+#print(np.min(np.abs(np.linalg.eigh(H)[0])))
 F=np.matrix(np.zeros((len(labels),len(labels)))+1j)
 for i in range(len(labels)):
     for j in range(len(labels)):
@@ -67,7 +66,7 @@ for j in range(N1):
 xarr=np.array(xarr)
 yarrs=np.array(yarrs)
 for yarr in yarrs.T:
-    plt.plot(xarr,yarr,'o-')
+    plt.plot(xarr,yarr,'ro',markersize=1.5)
 plt.xlabel('kx')
 plt.ylabel('E')
 plt.title('Energy Bands vs. kx for Edge Modes')
@@ -75,4 +74,3 @@ plt.title('Energy Bands vs. kx for Edge Modes')
 plt.savefig('img/edge{:.2f}.png'.format(Mh), dpi=300)
 plt.close()
 
-'''
