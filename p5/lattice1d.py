@@ -16,7 +16,7 @@ class lattice1d:
         return ret
 
     def labeltoR(self,label):
-        return [label[0]*self.a+self.tau[label[1]],0]
+        return np.array([label[0]*self.a+self.tau[label[1]],0])
 
     def labeltoIndex(self,label):
         return label[0]*self.M+label[1]
@@ -29,7 +29,7 @@ class lattice1d:
                 ret.append((i,j))
         return ret
     def momentumlabeltoK(self, label):
-        return label[0]*self.b
+        return np.array([label[0]*self.b,0])
 
 
 
